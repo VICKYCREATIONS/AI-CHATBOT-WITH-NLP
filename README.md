@@ -18,7 +18,6 @@ OUTPUT:
 
 AI Chatbot: Hi there! What can I do for you?
 
-
 AI Chatbot: I am an AI chatbot. You can call me ChatGPT!
 
 AI Chatbot: I'm just a bot, but I'm here to help you!
