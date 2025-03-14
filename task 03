@@ -1,0 +1,31 @@
+import nltk
+import random
+from nltk.chat.util import Chat, reflections
+
+def get_response(user_input):
+    pairs = [
+        [r"hi|hello|hey", ["Hello! How can I assist you today?", "Hi there! What can I do for you?"]],
+        [r"(.*) your name", ["I am an AI chatbot. You can call me ChatGPT!"]],
+        [r"how are you", ["I'm just a bot, but I'm here to help you!"]],
+        [r"bye|goodbye", ["Goodbye! Have a great day ahead!", "See you next time!"]],
+        [r"(.*)", ["I'm not sure I understand. Could you rephrase that?"]]
+    ]
+    
+    chatbot = Chat(pairs, reflections)
+    return chatbot.respond(user_input)
+
+def chat_from_script(inputs):
+    responses = []
+    for user_input in inputs:
+        if user_input.lower() == "exit":
+            responses.append("AI Chatbot: Goodbye!")
+            break
+        response = get_response(user_input)
+        responses.append(f"AI Chatbot: {response}")
+    return responses
+
+# Example usage
+if __name__ == "__main__":
+    test_inputs = ["hi", "what is your name?", "how are you", "bye"]
+    for response in chat_from_script(test_inputs):
+        print(response)
